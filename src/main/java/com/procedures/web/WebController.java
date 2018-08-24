@@ -31,8 +31,7 @@ public class WebController {
 
     @RequestMapping("/add/doctor")
     public String addDoctor(@RequestBody DoctorShortModel name, Model model) {
-        List<DoctorModel> doctors = doctorService.getAll();
-        model.addAttribute("doctors", doctors);
+        System.out.println(name);
         return "procedures";
     }
 

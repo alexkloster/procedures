@@ -40,26 +40,15 @@
         <table>
             <tr>
                 <td>Doctor name:</td>
-                <td><input id="name" name="name"></td>
-                <td><input type="submit" value="Add doctor" onclick="hideDoctorField()"></td>
+                <td><input id="newDoctorName" name="name"></td>
+                <td><input type="submit" value="Add doctor" onclick="addDoctor()"></td>
             </tr>
         </table>
     </form>
 
 </div>
 
-<script type="text/javascript">
-    function addDoctorField() {
-        var doctor = document.getElementById("addDoctor")
-        doctor.style.visibility = 'visible'
-    }
 
-    function hideDoctorField() {
-        alert("Doctor added");
-        var doctor = document.getElementById("addDoctor")
-        doctor.style.visibility = 'hide'
-    }
-</SCRIPT>
 
 
 </body>
