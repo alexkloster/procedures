@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+						http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="000_initial_migration.sql" author="akloster">
+        <comment>Initial migration</comment>
+        <sqlFile path="/db/changelog/sql/000_initial_migration.sql"/>
+    </changeSet>
+
+    <changeSet id="001_add_doctors.sql" author="akloster">
+        <comment>Add doctors</comment>
+        <sqlFile path="/db/changelog/sql/001_add_doctors_table.sql"/>
+    </changeSet>
+
+    <changeSet id="002_add_patient_table.sql" author="akloster">
+        <comment>Add patient</comment>
+        <sqlFile path="/db/changelog/sql/002_add_patient_table.sql"/>
+    </changeSet>
+
+    <changeSet id="003_add_room_table.sql" author="akloster">
+        <comment>Add room</comment>
+        <sqlFile path="/db/changelog/sql/003_add_room_table.sql"/>
+    </changeSet>
+
+    <changeSet id="004_add_study_table.sql" author="akloster">
+        <comment>Add study</comment>
+        <sqlFile path="/db/changelog/sql/004_add_study_table.sql"/>
+    </changeSet>
+
+</databaseChangeLog>
