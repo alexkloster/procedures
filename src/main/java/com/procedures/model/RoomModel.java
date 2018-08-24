@@ -3,17 +3,22 @@ package com.procedures.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class DoctorShortDto {
+import java.util.List;
+
+public class RoomModel {
+
 
     private final Long id;
 
     private final String name;
 
+    private final List<StudyDto> studies;
 
     @JsonCreator
-    public DoctorShortDto(@JsonProperty("id") Long id, @JsonProperty("name") String name) {
+    public RoomModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("studies") List<StudyDto> studies) {
         this.id = id;
         this.name = name;
+        this.studies = studies;
     }
 
     public Long getId() {
@@ -24,4 +29,7 @@ public class DoctorShortDto {
         return name;
     }
 
+    public List<StudyDto> getStudies() {
+        return studies;
+    }
 }

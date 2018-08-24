@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class PatientShortDto {
+public class PatientShortModel {
     private final Long id;
 
     private final String name;
@@ -16,8 +16,8 @@ public class PatientShortDto {
 
 
     @JsonCreator
-    public PatientShortDto(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("sex") String sex,
-                      @JsonProperty("dayOfBirth") Date dayOfBirth) {
+    public PatientShortModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("sex") String sex,
+                             @JsonProperty("dayOfBirth") Date dayOfBirth) {
         this.id = id;
         this.name = name;
         this.sex = sex;

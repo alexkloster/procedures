@@ -1,35 +1,37 @@
 package com.procedures.web;
 
-import com.procedures.model.DoctorDto;
+import com.procedures.model.DoctorModel;
+import com.procedures.model.DoctorShortModel;
 import com.procedures.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
-public class HelloController {
+public class WebController {
 
     private final DoctorService doctorService;
 
     @Autowired
-    public HelloController(DoctorService doctorService) {
+    public WebController(DoctorService doctorService) {
         this.doctorService = doctorService;
     }
 
     @RequestMapping("/procedures")
     public String procedures(Model model) {
-        List<DoctorDto> doctors = doctorService.getAll();
+        List<DoctorModel> doctors = doctorService.getAll();
         model.addAttribute("doctors", doctors);
         return "procedures";
     }
 
-    @RequestMapping("/manage/doctors")
-    public String addDoctor(Model model) {
-        List<DoctorDto> doctors = doctorService.getAll();
+    @RequestMapping("/add/doctor")
+    public String addDoctor(@RequestBody DoctorShortModel name, Model model) {
+        List<DoctorModel> doctors = doctorService.getAll();
         model.addAttribute("doctors", doctors);
         return "procedures";
     }

@@ -1,11 +1,11 @@
 package com.procedures.service;
 
-import com.procedures.model.PatientDto;
+import com.procedures.model.PatientModel;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional
 public interface PatientService {
 
-    PatientDto getPatient(String name);
+    PatientModel getPatient(String name);
 }

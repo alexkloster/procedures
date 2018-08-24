@@ -10,45 +10,57 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+    <!-- Static content -->
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <script type="text/javascript" src="/resources/js/app.js"></script>
     <title>Procedures scheduling</title>
 </head>
 <body>
-<h1>Spring Boot - MVC web application example</h1>
 <hr>
 <div>
-    <select name="doctors" title="Select doctor">
-        <c:forEach items="${doctors}" var="doctor">
-            <option value="${doctor.id}">${doctor.name}</option>
-        </c:forEach>
-    </select>
-    <form action="/manage/doctors" method="post">
-        <input type="button" value="Add doctor">
+    <table>
+        <tr>
+            <td>
+                <select name="doctors" title="Select doctor">
+                    <c:forEach items="${doctors}" var="doctor">
+                        <option value="${doctor.id}">${doctor.name}</option>
+                    </c:forEach>
+                </select>
+            </td>
+            <td>
+                <input type="button" value="Add doctor" onclick="addDoctorField();">
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<div id="addDoctor" style="visibility: hidden">
+    <form action="/add/doctor" method="post" onsubmit="return validate()">
+        <table>
+            <tr>
+                <td>Doctor name:</td>
+                <td><input id="name" name="name"></td>
+                <td><input type="submit" value="Add doctor" onclick="hideDoctorField()"></td>
+            </tr>
+        </table>
     </form>
+
 </div>
 
 <script type="text/javascript">
     function addDoctorField() {
+        var doctor = document.getElementById("addDoctor")
+        doctor.style.visibility = 'visible'
+    }
 
-        var element = document.createElement("input");
-        element.setAttribute("type", "text");
-        element.setAttribute("name", "mytext");
-        var spanvar = document.getElementById("myspan");
-        spanvar .appendChild(element);
+    function hideDoctorField() {
+        alert("Doctor added");
+        var doctor = document.getElementById("addDoctor")
+        doctor.style.visibility = 'hide'
     }
 </SCRIPT>
 
-<div id="certificationtog">
-    <p class="setting">
-        <input type="button" id="addrows" name="addrows" class="addperson"
-               value="Add Rows" onclick="add();">
-        <input type="button" id="removerows" class="removerows"
-               value="Delete Rows" />
-        <span id="myspan"></span>
-        <br><br>
-        <span style="width: 0px; margin-left: 20px; font-weight: bold; float: none;">
-      </span>
-    </p>
-</div>
 
 </body>
 </html>

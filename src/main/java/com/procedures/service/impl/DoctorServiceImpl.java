@@ -2,7 +2,7 @@ package com.procedures.service.impl;
 
 import com.procedures.dao.repository.DoctorRepository;
 import com.procedures.dao.entity.DoctorEntity;
-import com.procedures.model.DoctorDto;
+import com.procedures.model.DoctorModel;
 import com.procedures.service.DoctorService;
 import com.procedures.service.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,13 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public DoctorDto getDoctor(String name) {
+    public DoctorModel getDoctor(String name) {
         Optional<DoctorEntity> optional = doctorRepository.findByName(name);
         return optional.map(DtoMapper::toDoctorDto).orElseThrow(() -> new RuntimeException("no doctor"));
     }
 
     @Override
-    public List<DoctorDto> getAll() {
+    public List<DoctorModel> getAll() {
         List<DoctorEntity> doctors = doctorRepository.findAll();
         return doctors.stream().map(DtoMapper::toDoctorDto).collect(Collectors.toList());
     }

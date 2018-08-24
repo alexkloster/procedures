@@ -14,56 +14,56 @@ import java.util.stream.Collectors;
 
 public class DtoMapper {
 
-    public static DoctorDto toDoctorDto(DoctorEntity entity) {
+    public static DoctorModel toDoctorDto(DoctorEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
         List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
         List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
 
-        return new DoctorDto(entity.getId(), entity.getName(), studyDtos);
+        return new DoctorModel(entity.getId(), entity.getName(), studyDtos);
     }
 
-    public static DoctorShortDto toDoctorShortDto(DoctorEntity entity) {
+    public static DoctorShortModel toDoctorShortDto(DoctorEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
-        return new DoctorShortDto(entity.getId(), entity.getName());
+        return new DoctorShortModel(entity.getId(), entity.getName());
     }
 
-    public static RoomDto toRoomDto(RoomEntity entity) {
-        if(Objects.isNull(entity)) {
-            return null;
-        }
-        List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
-        List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
-
-        return new RoomDto(entity.getId(), entity.getName(), studyDtos);
-    }
-
-    public static RoomShortDto toRoomShortDto(RoomEntity entity) {
-        if(Objects.isNull(entity)) {
-            return null;
-        }
-        return new RoomShortDto(entity.getId(), entity.getName());
-    }
-
-    public static PatientDto toPatientDto(PatientEntity entity) {
+    public static RoomModel toRoomDto(RoomEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
         List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
         List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
 
-        return new PatientDto(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth(), studyDtos);
+        return new RoomModel(entity.getId(), entity.getName(), studyDtos);
     }
 
-    public static PatientShortDto toPatientShortDto(PatientEntity entity) {
+    public static RoomShortModel toRoomShortDto(RoomEntity entity) {
+        if(Objects.isNull(entity)) {
+            return null;
+        }
+        return new RoomShortModel(entity.getId(), entity.getName());
+    }
+
+    public static PatientModel toPatientDto(PatientEntity entity) {
+        if(Objects.isNull(entity)) {
+            return null;
+        }
+        List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
+        List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
+
+        return new PatientModel(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth(), studyDtos);
+    }
+
+    public static PatientShortModel toPatientShortDto(PatientEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
 
-        return new PatientShortDto(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth());
+        return new PatientShortModel(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth());
     }
 
     public static StudyDto toStudyDto(StudyEntity entity) {

@@ -2,7 +2,7 @@ package com.procedures.service.impl;
 
 import com.procedures.dao.repository.PatientRepository;
 import com.procedures.dao.entity.PatientEntity;
-import com.procedures.model.PatientDto;
+import com.procedures.model.PatientModel;
 import com.procedures.service.PatientService;
 import com.procedures.service.mapper.DtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientDto getPatient(String name) {
+    public PatientModel getPatient(String name) {
         Optional<PatientEntity> optional = patientRepository.findByName(name);
         return optional.map(DtoMapper::toPatientDto).orElseThrow(() -> new RuntimeException("no patient"));
     }

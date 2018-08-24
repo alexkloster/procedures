@@ -1,9 +1,9 @@
 package com.procedures.service;
 
-import com.procedures.model.RoomDto;
+import com.procedures.model.RoomModel;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface RoomService {
-    RoomDto getRoom(String name);
+    RoomModel getRoom(String name);
 }

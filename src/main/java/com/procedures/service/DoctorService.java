@@ -1,6 +1,6 @@
 package com.procedures.service;
 
-import com.procedures.model.DoctorDto;
+import com.procedures.model.DoctorModel;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 @Transactional
 public interface DoctorService {
 
-    DoctorDto getDoctor(String name);
+    DoctorModel getDoctor(String name);
 
-    List<DoctorDto> getAll();
+    List<DoctorModel> getAll();
 }

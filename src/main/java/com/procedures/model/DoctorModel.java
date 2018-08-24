@@ -5,8 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class RoomDto {
-
+public class DoctorModel {
 
     private final Long id;
 
@@ -15,7 +14,7 @@ public class RoomDto {
     private final List<StudyDto> studies;
 
     @JsonCreator
-    public RoomDto(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("studies") List<StudyDto> studies) {
+    public DoctorModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("studies") List<StudyDto> studies) {
         this.id = id;
         this.name = name;
         this.studies = studies;

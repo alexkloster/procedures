@@ -21,12 +21,6 @@ public class WebApplication extends SpringBootServletInitializer {
         return builder.sources(WebApplication.class);
     }
 
-
-//    @Override
-//    public void onStartup(ServletContext servletContext) throws ServletException {
-//        servletContext.setInitParameter("com.sun.faces.expressionFactory", "org.apache.el.ExpressionFactoryImpl");
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(WebApplication.class, args);
     }
