@@ -2,8 +2,6 @@ package com.procedures.service.mapper;
 
 import com.procedures.dao.entity.*;
 
-
-
 import java.util.Date;
 
 public class EntityMapper {
@@ -20,10 +18,12 @@ public class EntityMapper {
         return new RoomEntity(name);
     }
 
-//    public static StudyEntity toStudyEntity(String description, Status status, Date startTime, Date estimatedTime,
-//                                            PatientEntity patient, DoctorEntity doctor, RoomEntity roo) {
-//        return new StudyEntity(description, status, startTime, estimatedTime, patient, doctor);
-//    }
+    public static StudyEntity toStudyEntity(String description, Status status, Date plannedStart, Date extimatedEnd,
+                                            RoomEntity room, PatientEntity patient, DoctorEntity doctor) {
+
+        return new StudyEntity(description, status, plannedStart, extimatedEnd, patient, doctor, room);
+    }
+
 
 }
 
