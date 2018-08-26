@@ -18,17 +18,17 @@ public class StudyDto {
 
     private final Date estimatedEndTime;
 
-    private final PatientShortModel patient;
+    private final PatientModel patient;
 
-    private final DoctorShortModel doctor;
+    private final DoctorModel doctor;
 
-    private final RoomShortModel room;
+    private final RoomModel room;
 
     @JsonCreator
     public StudyDto(@JsonProperty("id") Long id, @JsonProperty("description") String description,
                     @JsonProperty("status") String status, @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date plannedStartTime,
-                    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date estimatedEndTime, @JsonProperty("patient") PatientShortModel patient,
-                    @JsonProperty("doctor") DoctorShortModel doctor, @JsonProperty("room") RoomShortModel room) {
+                    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date estimatedEndTime, @JsonProperty("patient") PatientModel patient,
+                    @JsonProperty("doctor") DoctorModel doctor, @JsonProperty("room") RoomModel room) {
         this.id = id;
         this.description = description;
         this.status = status;
@@ -60,15 +60,15 @@ public class StudyDto {
         return estimatedEndTime;
     }
 
-    public PatientShortModel getPatient() {
+    public PatientModel getPatient() {
         return patient;
     }
 
-    public DoctorShortModel getDoctor() {
+    public DoctorModel getDoctor() {
         return doctor;
     }
 
-    public RoomShortModel getRoom() {
+    public RoomModel getRoom() {
         return room;
     }
 }

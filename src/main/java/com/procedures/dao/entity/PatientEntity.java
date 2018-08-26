@@ -19,18 +19,7 @@ public class PatientEntity {
 
     private Date dayOfBirth;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "patient_id")
-    private List<StudyEntity> studies;
-
     public PatientEntity() {
-    }
-
-    public PatientEntity(String name, Sex sex, Date dayOfBirth, List<StudyEntity> studies) {
-        this.name = name;
-        this.sex = sex;
-        this.dayOfBirth = dayOfBirth;
-        this.studies = studies;
     }
 
     public PatientEntity(String name, Sex sex, Date dayOfBirth) {
@@ -69,13 +58,5 @@ public class PatientEntity {
 
     public void setDayOfBirth(Date dayOfBirth) {
         this.dayOfBirth = dayOfBirth;
-    }
-
-    public List<StudyEntity> getStudies() {
-        return studies;
-    }
-
-    public void setStudies(List<StudyEntity> studies) {
-        this.studies = studies;
     }
 }

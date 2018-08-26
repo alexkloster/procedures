@@ -11,4 +11,6 @@ public interface DoctorService {
     DoctorModel getDoctor(String name);
 
     List<DoctorModel> getAll();
+
+    DoctorModel addDoctor(DoctorModel doctor);
 }

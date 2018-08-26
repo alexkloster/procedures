@@ -1,7 +1,7 @@
 package com.procedures.dao.entity;
 
 public enum Sex {
-    MEN("men"), WOM("woman");
+    MALE("male"), FEMALE("female");
 
     private final String sex;
 

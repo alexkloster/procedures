@@ -11,13 +11,10 @@ public class DoctorModel {
 
     private final String name;
 
-    private final List<StudyDto> studies;
-
     @JsonCreator
-    public DoctorModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("studies") List<StudyDto> studies) {
+    public DoctorModel(@JsonProperty("id") Long id, @JsonProperty("name") String name) {
         this.id = id;
         this.name = name;
-        this.studies = studies;
     }
 
     public Long getId() {
@@ -26,9 +23,5 @@ public class DoctorModel {
 
     public String getName() {
         return name;
-    }
-
-    public List<StudyDto> getStudies() {
-        return studies;
     }
 }

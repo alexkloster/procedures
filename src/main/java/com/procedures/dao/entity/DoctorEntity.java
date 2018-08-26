@@ -13,16 +13,8 @@ public class DoctorEntity {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "doctor_id")
-    private List<StudyEntity> studies;
 
     public DoctorEntity() {
-    }
-
-    public DoctorEntity(String name, List<StudyEntity> studies) {
-        this.name = name;
-        this.studies = studies;
     }
 
     public DoctorEntity(String name) {
@@ -43,13 +35,5 @@ public class DoctorEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<StudyEntity> getStudies() {
-        return studies;
-    }
-
-    public void setStudies(List<StudyEntity> studies) {
-        this.studies = studies;
     }
 }

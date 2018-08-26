@@ -1,15 +1,17 @@
 package com.procedures.service.impl;
 
-import com.procedures.dao.repository.RoomRepository;
-import com.procedures.dao.entity.RoomEntity;
+        import com.procedures.dao.repository.RoomRepository;
+        import com.procedures.dao.entity.RoomEntity;
 
-import com.procedures.model.RoomModel;
-import com.procedures.service.RoomService;
-import com.procedures.service.mapper.DtoMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+        import com.procedures.model.RoomModel;
+        import com.procedures.service.RoomService;
+        import com.procedures.service.mapper.DtoMapper;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+        import java.util.List;
+        import java.util.Optional;
+        import java.util.stream.Collectors;
 
 @Service
 public class RoomServiceImpl implements RoomService {
@@ -25,5 +27,13 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public RoomModel getRoom(String name) {
         Optional<RoomEntity> optional = roomRepository.findByName(name);
-        return optional.map(DtoMapper::toRoomDto).orElseThrow(() -> new RuntimeException("no room"));    }
+        return optional.map(DtoMapper::toRoomDto).orElseThrow(() -> new RuntimeException("no room"));
+    }
+
+    @Override
+    public List<RoomModel> getAll() {
+        List<RoomEntity> rooms = roomRepository.findAll();
+        return rooms.stream().map(DtoMapper::toRoomDto).collect(Collectors.toList());
+    }
+
 }

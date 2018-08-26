@@ -16,16 +16,14 @@ public class PatientModel {
 
     private final Date dayOfBirth;
 
-    private final List<StudyDto> studies;
 
     @JsonCreator
     public PatientModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("sex") String sex,
-                        @JsonProperty("dayOfBirth") Date dayOfBirth, @JsonProperty("studies") List<StudyDto> studies) {
+                        @JsonProperty("dayOfBirth") Date dayOfBirth) {
         this.id = id;
         this.name = name;
         this.sex = sex;
         this.dayOfBirth = dayOfBirth;
-        this.studies = studies;
     }
 
     public Long getId() {
@@ -44,7 +42,4 @@ public class PatientModel {
         return dayOfBirth;
     }
 
-    public List<StudyDto> getStudies() {
-        return studies;
-    }
 }

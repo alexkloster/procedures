@@ -18,61 +18,36 @@ public class DtoMapper {
         if(Objects.isNull(entity)) {
             return null;
         }
-        List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
-        List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
-
-        return new DoctorModel(entity.getId(), entity.getName(), studyDtos);
+        return new DoctorModel(entity.getId(), entity.getName());
     }
 
-    public static DoctorShortModel toDoctorShortDto(DoctorEntity entity) {
-        if(Objects.isNull(entity)) {
-            return null;
-        }
-        return new DoctorShortModel(entity.getId(), entity.getName());
-    }
+
 
     public static RoomModel toRoomDto(RoomEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
-        List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
-        List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
-
-        return new RoomModel(entity.getId(), entity.getName(), studyDtos);
+        return new RoomModel(entity.getId(), entity.getName());
     }
 
-    public static RoomShortModel toRoomShortDto(RoomEntity entity) {
-        if(Objects.isNull(entity)) {
-            return null;
-        }
-        return new RoomShortModel(entity.getId(), entity.getName());
-    }
+
 
     public static PatientModel toPatientDto(PatientEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
-        List<StudyEntity> studies = Optional.ofNullable(entity.getStudies()).orElseGet(ArrayList::new);
-        List<StudyDto> studyDtos = studies.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
 
-        return new PatientModel(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth(), studyDtos);
+        return new PatientModel(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth());
     }
 
-    public static PatientShortModel toPatientShortDto(PatientEntity entity) {
-        if(Objects.isNull(entity)) {
-            return null;
-        }
-
-        return new PatientShortModel(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth());
-    }
 
     public static StudyDto toStudyDto(StudyEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
         return new StudyDto(entity.getId(), entity.getDescription(), entity.getStatus().toString(), entity.getPlannedStartTime(),
-                entity.getEstimatedEndTime(), toPatientShortDto(entity.getPatient()), toDoctorShortDto(entity.getDoctor()),
-                toRoomShortDto(entity.getRoom()));
+                entity.getEstimatedEndTime(), toPatientDto(entity.getPatient()), toDoctorDto(entity.getDoctor()),
+                toRoomDto(entity.getRoom()));
     }
 
 
