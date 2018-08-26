@@ -4,13 +4,12 @@ import com.procedures.dao.entity.DoctorEntity;
 import com.procedures.dao.entity.PatientEntity;
 import com.procedures.dao.entity.RoomEntity;
 import com.procedures.dao.entity.StudyEntity;
-import com.procedures.model.*;
+import com.procedures.model.DoctorModel;
+import com.procedures.model.PatientModel;
+import com.procedures.model.RoomModel;
+import com.procedures.model.StudyModel;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class DtoMapper {
 
@@ -41,11 +40,11 @@ public class DtoMapper {
     }
 
 
-    public static StudyDto toStudyDto(StudyEntity entity) {
+    public static StudyModel toStudyDto(StudyEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
-        return new StudyDto(entity.getId(), entity.getDescription(), entity.getStatus().toString(), entity.getPlannedStartTime(),
+        return new StudyModel(entity.getId(), entity.getDescription(), entity.getStatus().toString(), entity.getPlannedStartTime(),
                 entity.getEstimatedEndTime(), toPatientDto(entity.getPatient()), toDoctorDto(entity.getDoctor()),
                 toRoomDto(entity.getRoom()));
     }

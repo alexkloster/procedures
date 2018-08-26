@@ -122,6 +122,20 @@ function saveProcedure() {
 
 }
 
-function createDateTime(date, time) {
-    return date + ":" + time;
+$("#studiesTable").on("click", "tr", function(e) {
+    var id = $(e.currentTarget).attr('id');
+});
+
+function onClickRow(id) {
+    var result;
+    $.ajax({
+        url: "/edit/"+ id +"/procedure",
+        type: "GET",
+        dataType: "jsonp",
+        success: function(resultData) {
+            console.log(resultData);
+            // process it
+
+        }
+    });
 }

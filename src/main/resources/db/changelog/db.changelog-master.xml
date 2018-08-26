@@ -29,4 +29,9 @@
         <sqlFile path="/db/changelog/sql/004_add_study_table.sql"/>
     </changeSet>
 
+    <changeSet id="005_edit_schema.sql" author="akloster">
+        <comment>Edit</comment>
+        <sqlFile path="/db/changelog/sql/005_edit_schema.sql"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -5,7 +5,7 @@ import com.procedures.dao.repository.DoctorRepository;
 import com.procedures.dao.repository.PatientRepository;
 import com.procedures.dao.repository.RoomRepository;
 import com.procedures.dao.repository.StudyRepository;
-import com.procedures.model.StudyDto;
+import com.procedures.model.StudyModel;
 import com.procedures.service.StudyService;
 import com.procedures.service.mapper.DtoMapper;
 import com.procedures.service.mapper.EntityMapper;
@@ -37,24 +37,30 @@ public class StudyServiceImpl implements StudyService {
 
 
     @Override
-    public StudyDto getStudy(String description) {
+    public StudyModel getStudy(String description) {
         Optional<StudyEntity> optional = studyRepository.findByDescription(description);
-        return optional.map(DtoMapper::toStudyDto).orElseThrow(()->new RuntimeException("no study"));
+        return optional.map(DtoMapper::toStudyDto).orElseThrow(() -> new RuntimeException("no study"));
     }
 
     @Override
-    public List<StudyDto> getAll() {
+    public List<StudyModel> getAll() {
         List<StudyEntity> studyEntities = studyRepository.findAll();
         return studyEntities.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
     }
 
     @Override
-    public StudyDto saveStudy(StudyDto study) {
+    public StudyModel saveStudy(StudyModel study) {
         DoctorEntity doctor = doctorRepository.findById(study.getDoctor().getId()).orElseThrow(() -> new RuntimeException("no doctor with id: " + study.getDoctor().getId()));
         PatientEntity patient = patientRepository.findById(study.getPatient().getId()).orElseThrow(() -> new RuntimeException("no patient with id: " + study.getPatient().getId()));
         RoomEntity room = roomRepository.findById(study.getRoom().getId()).orElseThrow(() -> new RuntimeException("no room with id: " + study.getRoom().getId()));
-        StudyEntity studyEntity = EntityMapper.toStudyEntity(study.getDescription(), Status.PLANNED, study.getPlannedStartTime(), study.getEstimatedEndTime(), room,  patient, doctor);
+        StudyEntity studyEntity = EntityMapper.toStudyEntity(study.getDescription(), Status.PLANNED, study.getPlannedStartTime(), study.getEstimatedEndTime(), room, patient, doctor);
         StudyEntity result = studyRepository.save(studyEntity);
         return DtoMapper.toStudyDto(result);
+    }
+
+    @Override
+    public StudyModel getById(Long id) {
+        Optional<StudyEntity> optional = studyRepository.findById(id);
+        return optional.map(DtoMapper::toStudyDto).orElseThrow(() -> new RuntimeException("no study with id: " + id));
     }
 }

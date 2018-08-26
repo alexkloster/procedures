@@ -12,6 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
     <!-- Static content -->
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/resources/js/app.js"></script>
@@ -24,8 +25,9 @@
     <div id="procedureDescription">
         <h3>Enter procedure description</h3>
         <br>
-        <label>Description:</label>
+        <label for="procedureDescriptionText">Description:</label>
         <input type="text" id="procedureDescriptionText">
+
     </div>
     <br>
     <hr>

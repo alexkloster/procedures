@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/resources/css/style.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/resources/js/app.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
@@ -25,7 +26,8 @@
 <div id="content">
     <h1>Procedure scheduling application</h1>
     <h3>Existing procedures</h3>
-    <table>
+    <table class="table table-hover" id="studiesTable">
+        <thead class="thead-light">
         <tr>
             <td>Description</td>
             <td>Status</td>
@@ -35,19 +37,20 @@
             <td>Patient</td>
             <td>Room</td>
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${studies}" var="study">
-            <tr>
-                <td>
-                    <a id=study.id onclick='editStudy(this.id)'>study.description</a>
-                </td>
-                <td>study.status</td>
-                <td>study.plannedStartTime</td>
-                <td>srudy.estimatedEndTime</td>
-                <td>study.doctor.name</td>
-                <td>atudy.patient.name</td>
-                <td>stydu.room.name</td>
+            <tr id="${study.id}" onclick=onClickRow(this.id)>
+                <td>${study.description}</td>
+                <td>${study.status}</td>
+                <td>${study.plannedStartTime}</td>
+                <td>${study.estimatedEndTime}</td>
+                <td>${study.doctor.name}</td>
+                <td>${study.patient.name}</td>
+                <td>${study.room.name}</td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 </body>

@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
-public class StudyDto {
+public class StudyModel {
 
     private final Long id;
 
@@ -25,10 +25,10 @@ public class StudyDto {
     private final RoomModel room;
 
     @JsonCreator
-    public StudyDto(@JsonProperty("id") Long id, @JsonProperty("description") String description,
-                    @JsonProperty("status") String status, @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date plannedStartTime,
-                    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date estimatedEndTime, @JsonProperty("patient") PatientModel patient,
-                    @JsonProperty("doctor") DoctorModel doctor, @JsonProperty("room") RoomModel room) {
+    public StudyModel(@JsonProperty("id") Long id, @JsonProperty("description") String description,
+                      @JsonProperty("status") String status, @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date plannedStartTime,
+                      @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date estimatedEndTime, @JsonProperty("patient") PatientModel patient,
+                      @JsonProperty("doctor") DoctorModel doctor, @JsonProperty("room") RoomModel room) {
         this.id = id;
         this.description = description;
         this.status = status;

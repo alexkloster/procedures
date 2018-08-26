@@ -1,6 +1,6 @@
 package com.procedures.service;
 
-import com.procedures.model.StudyDto;
+import com.procedures.model.StudyModel;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -8,9 +8,11 @@ import java.util.List;
 @Transactional
 public interface StudyService {
 
-    StudyDto getStudy(String description);
+    StudyModel getStudy(String description);
 
-    List<StudyDto> getAll();
+    List<StudyModel> getAll();
 
-    StudyDto saveStudy(StudyDto study);
+    StudyModel saveStudy(StudyModel study);
+
+    StudyModel getById(Long id);
 }
