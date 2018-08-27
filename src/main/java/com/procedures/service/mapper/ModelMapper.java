@@ -8,9 +8,9 @@ import com.procedures.model.StudyModel;
 
 import java.util.Objects;
 
-public class DtoMapper {
+public class ModelMapper {
 
-    public static DoctorModel toDoctorDto(DoctorEntity entity) {
+    public static DoctorModel toDoctorModel(DoctorEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
@@ -19,7 +19,7 @@ public class DtoMapper {
 
 
 
-    public static RoomModel toRoomDto(RoomEntity entity) {
+    public static RoomModel toRoomModel(RoomEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
@@ -28,7 +28,7 @@ public class DtoMapper {
 
 
 
-    public static PatientModel toPatientDto(PatientEntity entity) {
+    public static PatientModel toPatientModel(PatientEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
@@ -37,13 +37,13 @@ public class DtoMapper {
     }
 
 
-    public static StudyModel toStudyDto(StudyEntity entity) {
+    public static StudyModel toStudyModel(StudyEntity entity) {
         if(Objects.isNull(entity)) {
             return null;
         }
         return new StudyModel(entity.getId(), entity.getDescription(), entity.getStatus().toString(), entity.getPlannedStartTime(),
-                entity.getEstimatedEndTime(), toPatientDto(entity.getPatient()), toDoctorDto(entity.getDoctor()),
-                toRoomDto(entity.getRoom()));
+                entity.getEstimatedEndTime(), toPatientModel(entity.getPatient()), toDoctorModel(entity.getDoctor()),
+                toRoomModel(entity.getRoom()));
     }
 
 

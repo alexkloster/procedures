@@ -4,8 +4,8 @@ import com.procedures.dao.entity.RoomEntity;
 import com.procedures.dao.repository.RoomRepository;
 import com.procedures.model.RoomModel;
 import com.procedures.service.RoomService;
-import com.procedures.service.mapper.DtoMapper;
 import com.procedures.service.mapper.EntityMapper;
+import com.procedures.service.mapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,18 +27,18 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public RoomModel getRoom(String name) {
         Optional<RoomEntity> optional = roomRepository.findByName(name);
-        return optional.map(DtoMapper::toRoomDto).orElseThrow(() -> new RuntimeException("no room"));
+        return optional.map(ModelMapper::toRoomModel).orElseThrow(() -> new RuntimeException("no room"));
     }
 
     @Override
     public List<RoomModel> getAll() {
         List<RoomEntity> rooms = roomRepository.findAll();
-        return rooms.stream().map(DtoMapper::toRoomDto).collect(Collectors.toList());
+        return rooms.stream().map(ModelMapper::toRoomModel).collect(Collectors.toList());
     }
 
     @Override
     public RoomModel addRoom(RoomModel room) {
-        return DtoMapper.toRoomDto(roomRepository.save(EntityMapper.toRoomEntity(room.getName())));
+        return ModelMapper.toRoomModel(roomRepository.save(EntityMapper.toRoomEntity(room.getName())));
     }
 
 }

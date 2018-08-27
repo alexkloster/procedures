@@ -7,8 +7,8 @@ import com.procedures.dao.repository.RoomRepository;
 import com.procedures.dao.repository.StudyRepository;
 import com.procedures.model.StudyModel;
 import com.procedures.service.StudyService;
-import com.procedures.service.mapper.DtoMapper;
 import com.procedures.service.mapper.EntityMapper;
+import com.procedures.service.mapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,13 +39,13 @@ public class StudyServiceImpl implements StudyService {
     @Override
     public StudyModel getStudy(String description) {
         Optional<StudyEntity> optional = studyRepository.findByDescription(description);
-        return optional.map(DtoMapper::toStudyDto).orElseThrow(() -> new RuntimeException("no study"));
+        return optional.map(ModelMapper::toStudyModel).orElseThrow(() -> new RuntimeException("no study"));
     }
 
     @Override
     public List<StudyModel> getAll() {
         List<StudyEntity> studyEntities = studyRepository.findAll();
-        return studyEntities.stream().map(DtoMapper::toStudyDto).collect(Collectors.toList());
+        return studyEntities.stream().map(ModelMapper::toStudyModel).collect(Collectors.toList());
     }
 
     @Override
@@ -55,12 +55,12 @@ public class StudyServiceImpl implements StudyService {
         RoomEntity room = roomRepository.findById(study.getRoom().getId()).orElseThrow(() -> new RuntimeException("no room with id: " + study.getRoom().getId()));
         StudyEntity studyEntity = EntityMapper.toStudyEntity(study.getDescription(), Status.PLANNED, study.getPlannedStartTime(), study.getEstimatedEndTime(), room, patient, doctor);
         StudyEntity result = studyRepository.save(studyEntity);
-        return DtoMapper.toStudyDto(result);
+        return ModelMapper.toStudyModel(result);
     }
 
     @Override
     public StudyModel getById(Long id) {
         Optional<StudyEntity> optional = studyRepository.findById(id);
-        return optional.map(DtoMapper::toStudyDto).orElseThrow(() -> new RuntimeException("no study with id: " + id));
+        return optional.map(ModelMapper::toStudyModel).orElseThrow(() -> new RuntimeException("no study with id: " + id));
     }
 }
