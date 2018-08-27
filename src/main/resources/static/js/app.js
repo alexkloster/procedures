@@ -80,6 +80,29 @@ function addRoom() {
     }
 }
 
+function addPatient() {
+    var date = new Date($('#newPatientBirth').val());
+    var day = ('0' + date.getDate()).slice(-2);
+    var month = ('0' + (date.getMonth() + 1)).slice(-2);
+    var year = date.getFullYear();
+    var selectedSex = $("#sexList").find(":selected");
+
+    var patient = {};
+    patient.name = $("#newPatientName").val();
+    patient.dayOfBirth = [year, month, day].join('-');
+    patient.sex = selectedSex.val();
+
+    $.ajax({
+        url: "/add/patient",
+        type: "POST",
+        data: JSON.stringify(patient),
+        dataType: "json",
+        contentType: "application/json; charset=utf-8"
+    });
+    var patientDiv = document.getElementById("addPatient");
+    patientDiv.style.display = 'none';
+}
+
 function saveProcedure() {
     var doctor = {};
     var selectedDoctor = $("#docList").find(":selected");
@@ -125,6 +148,7 @@ function saveProcedure() {
 $("#studiesTable").on("click", "tr", function(e) {
     var id = $(e.currentTarget).attr('id');
 });
+
 
 function onClickRow(id) {
     var result;

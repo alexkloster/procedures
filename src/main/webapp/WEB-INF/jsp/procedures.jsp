@@ -25,7 +25,17 @@
 <body>
 <div id="content">
     <h1>Procedure scheduling application</h1>
-    <h3>Existing procedures</h3>
+    <table width="100%">
+        <tr>
+            <td><h3>Existing procedures</h3></td>
+            <td align="right">
+                <form action="/add/procedure" method="post">
+                    <button class="btn btn-primary float-right">Add procedure</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
     <table class="table table-hover" id="studiesTable">
         <thead class="thead-light">
         <tr>

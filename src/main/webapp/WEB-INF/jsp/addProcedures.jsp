@@ -157,14 +157,14 @@
                     <td width="20"></td>
                     <td>
                         <select id="sexList" name="sex">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="MALE">Male</option>
+                            <option value="FEMALE">Female</option>
                         </select>
                     </td>
                     <td width="20"></td>
                     <td><input type="date" class="form-control" id="newPatientBirth" name="birthDate"></td>
                     <td width="20"></td>
-                    <td><input type="button" class="btn btn-secondary" value="Add patient"></td>
+                    <td><input type="button" class="btn btn-secondary" value="Add patient" onclick="addPatient()"></td>
                 </tr>
             </table>
         </div>
@@ -177,7 +177,7 @@
                 <tr>
                     <td><input class="form-control" id="newRoomName" name="name"></td>
                     <td width="20"></td>
-                    <td><input type="button" class="btn btn-secondary" value="Add room"></td>
+                    <td><input type="button" class="btn btn-secondary" value="Add room" onclick="addRoom()"></td>
                 </tr>
             </table>
         </div>
@@ -187,8 +187,10 @@
     </div>
     <br>
     <div>
-        <button class="btn btn-primary float-left">Back to procedures</button>
-        <button class="btn btn-primary float-right"  onclick=saveProcedure()>Save procedure</button>
+        <form action="/procedures" method="post">
+            <button class="btn btn-primary float-left">Back to procedures</button>
+        </form>
+        <button class="btn btn-primary float-right" onclick=saveProcedure()>Save procedure</button>
     </div>
 </div>
 </body>

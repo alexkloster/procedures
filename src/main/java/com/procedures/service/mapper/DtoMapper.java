@@ -1,9 +1,6 @@
 package com.procedures.service.mapper;
 
-import com.procedures.dao.entity.DoctorEntity;
-import com.procedures.dao.entity.PatientEntity;
-import com.procedures.dao.entity.RoomEntity;
-import com.procedures.dao.entity.StudyEntity;
+import com.procedures.dao.entity.*;
 import com.procedures.model.DoctorModel;
 import com.procedures.model.PatientModel;
 import com.procedures.model.RoomModel;
@@ -36,7 +33,7 @@ public class DtoMapper {
             return null;
         }
 
-        return new PatientModel(entity.getId(), entity.getName(), entity.getSex().getSex(), entity.getDayOfBirth());
+        return new PatientModel(entity.getId(), entity.getName(), Sex.getByName(entity.getSex().getSex()), entity.getDayOfBirth());
     }
 
 

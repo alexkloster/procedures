@@ -12,4 +12,7 @@ public interface PatientService {
     PatientModel getPatient(String name);
 
     List<PatientModel> getAll();
+
+    PatientModel addPatient(PatientModel patient);
+
 }

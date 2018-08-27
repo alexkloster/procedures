@@ -67,8 +67,18 @@ public class WebController {
     @RequestMapping(value = "/add/doctor", method = RequestMethod.POST)
     public String addDoctor(@RequestBody DoctorModel doctor, Model model) {
         doctorService.addDoctor(doctor);
-        List<DoctorModel> doctors = doctorService.getAll();
-        model.addAttribute("doctors", doctors);
-        return "procedures";
+        return addProcedure(model);
+    }
+
+    @RequestMapping(value = "/add/patient", method = RequestMethod.POST)
+    public String addPatient(@RequestBody PatientModel patient, Model model) {
+        patientService.addPatient(patient);
+        return addProcedure(model);
+    }
+
+    @RequestMapping(value = "/add/room", method = RequestMethod.POST)
+    public String addRoom(@RequestBody RoomModel room, Model model) {
+        roomService.addRoom(room);
+        return addProcedure(model);
     }
 }

@@ -10,4 +10,6 @@ public interface RoomService {
     RoomModel getRoom(String name);
 
     List<RoomModel> getAll();
+
+    RoomModel addRoom(RoomModel room);
 }

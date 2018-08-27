@@ -2,9 +2,9 @@ package com.procedures.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.procedures.dao.entity.Sex;
 
 import java.util.Date;
-import java.util.List;
 
 public class PatientModel {
 
@@ -12,13 +12,13 @@ public class PatientModel {
 
     private final String name;
 
-    private final String sex;
+    private final Sex sex;
 
     private final Date dayOfBirth;
 
 
     @JsonCreator
-    public PatientModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("sex") String sex,
+    public PatientModel(@JsonProperty("id") Long id, @JsonProperty("name") String name, @JsonProperty("sex") Sex sex,
                         @JsonProperty("dayOfBirth") Date dayOfBirth) {
         this.id = id;
         this.name = name;
@@ -34,7 +34,7 @@ public class PatientModel {
         return name;
     }
 
-    public String getSex() {
+    public Sex getSex() {
         return sex;
     }
 
